@@ -1,16 +1,17 @@
-# Proposal
+# Major Project Proposal
 
 ## Description
 
-Describe what I'm going to make...
+A chaos focused rpg multiplayer monster battler where your biggest threat is the other players.
 
 ## Needs To Have List
 
-- thing 1
-- thing 2
-- etc
+- multiplayer
+- multiple player roles (akin to rpg classes, such as wizard, fighter, etc)
+- a working monster ai, however simple it is
+- some way to differentiate all the different players
 
 ## Nice To Have List
 
-- other thing
-- yet another thing
+- 
+- 
