@@ -56,9 +56,7 @@ async function setup() {
   cellSize = Math.min(windowWidth, windowHeight) / cols;
 
   // code to center the canvas if I ever feel like changing the way the game is displayed
-  let canvas = createCanvas(windowWidth, windowHeight);
-  // let canvas = createCanvas(cols*cellSize, rows*cellSize);
-  canvas.parent("canvas-container");
+  createCanvas(windowWidth, windowHeight);
 
   // align all text to the center
   textAlign(CENTER, CENTER);
@@ -108,13 +106,14 @@ function displayGameState() {
   else if (gameState === PLAYING_GAME) {
     background(100, 150, 0);
     displayGrid();
-    // playerChar.spellLine(); debug please ignore
+    playerChar.spellLine(); // debug please ignore
     playerChar.playerStatBars();
   }
   // the game over screen, just the last frame of the playing game screen with game over on it
   else if (gameState === GAME_OVER) {
     // checks if you went out of your way to make your character die
     if (playerAnIdiot) {
+      fill("black");
       textSize(150);
       text("GAME OVER", windowWidth/2, windowHeight/8);
       textSize(50);
@@ -528,14 +527,26 @@ class Player {
   }
 
   // debug for later
-  // spellLine() {
-  //   if (spellTarget.x !== undefined) {
-  //     noStroke();
-  //     let targetX = spellTarget.x * cellSize + cellSize/2;
-  //     let targetY = spellTarget.y * cellSize + cellSize/2;
-  //     line(targetX, targetY, this.playX * cellSize + cellSize/2, this.playY * cellSize + cellSize/2);
-  //   }
-  // }
+  spellLine() {
+    if (spellTarget.x !== undefined) {
+      let targetX = spellTarget.x * cellSize + cellSize/2;
+      let targetY = spellTarget.y * cellSize + cellSize/2;
+      line(targetX, targetY, this.playX * cellSize + cellSize/2, this.playY * cellSize + cellSize/2);
+    }
+  }
+
+  gridLine() {
+    if (spellTarget.x !== undefined) {
+      let slopeX = spellTarget.x - this.playX;
+      let slopeY = spellTarget.y - this.playY;
+
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          return;
+        }
+      }
+    }
+  }
 
   // the spell casting function
   castSpell(spell) {
