@@ -106,7 +106,8 @@ function displayGameState() {
   else if (gameState === PLAYING_GAME) {
     background(100, 150, 0);
     displayGrid();
-    playerChar.spellLine(); // debug please ignore
+    // playerChar.spellLine(); // debug please ignore
+    playerChar.gridLine();
     playerChar.playerStatBars();
   }
   // the game over screen, just the last frame of the playing game screen with game over on it
@@ -537,12 +538,16 @@ class Player {
 
   gridLine() {
     if (spellTarget.x !== undefined) {
-      let slopeX = spellTarget.x - this.playX;
-      let slopeY = spellTarget.y - this.playY;
+      let offsetX = Math.floor(abs(spellTarget.x - this.playX));
+      let offsetY = Math.floor(abs(spellTarget.y - this.playY));
 
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          return;
+      if (spellTarget.x !== this.playX && spellTarget.y !== this.playY) {
+        for (let y = 0; y < rows; y++) {
+          for (let x = 0; x < cols; x++) {
+            if (y >= this.playY && y <= spellTarget.y && x >= this.playX && x <= spellTarget.x || y <= this.playY && y >= spellTarget.y && x >= this.playX && x <= spellTarget.x) {
+              image(targetImg, x * cellSize, y * cellSize, cellSize, cellSize);
+            }
+          }
         }
       }
     }
