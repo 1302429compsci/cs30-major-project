@@ -544,7 +544,7 @@ class Player {
       if (spellTarget.x !== this.playX && spellTarget.y !== this.playY) {
         for (let y = 0; y < rows; y++) {
           for (let x = 0; x < cols; x++) {
-            if (y >= this.playY && y <= spellTarget.y && x >= this.playX && x <= spellTarget.x || y <= this.playY && y >= spellTarget.y && x >= this.playX && x <= spellTarget.x) {
+            if (y >= this.playY && y <= spellTarget.y || y <= this.playY && y >= spellTarget.y) {
               image(targetImg, x * cellSize, y * cellSize, cellSize, cellSize);
             }
           }
