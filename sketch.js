@@ -106,7 +106,7 @@ function displayGameState() {
   else if (gameState === PLAYING_GAME) {
     background(100, 150, 0);
     displayGrid();
-    // playerChar.spellLine(); // debug please ignore
+    playerChar.spellLine(); // debug please ignore
     playerChar.gridLine();
     playerChar.playerStatBars();
   }
@@ -540,16 +540,29 @@ class Player {
     if (spellTarget.x !== undefined) {
       let offsetX = Math.floor(abs(spellTarget.x - this.playX));
       let offsetY = Math.floor(abs(spellTarget.y - this.playY));
-      console.log(offsetX, offsetY);
-      if (offsetX !== 0 && offsetY !== 0) {
-        for (let y = 0; y < rows; y++) {
-          for (let x = 0; x < cols; x++) {
-            if ((y >= this.playY && y <= spellTarget.y || y <= this.playY && y >= spellTarget.y)) {
-              image(targetImg, x * cellSize, y * cellSize, cellSize, cellSize);
-            }
+      let offsetXY = Math.floor(Math.hypot(offsetX, offsetY));
+      // do some stuff to figure out what square on the grid is closest to the hypotenuse of the target line
+
+      for (let y = 0; y < offsetY; y++) {
+        for (let x = 0; x < offsetX; x++) {
+          if (true) {
+            image(targetImg, x * cellSize, y * cellSize, cellSize, cellSize);
           }
         }
       }
+      // if (Math.max(abs(offsetX), abs(offsetY)) === offsetX) {
+      //   if 
+      //   for (let y = 0; y < offsetY; y++) {
+      //     for (let x = 0; x < offsetX; x++) {
+      //       if (y >= this.playY && y <= spellTarget.y || y <= this.playY && y >= spellTarget.y) {
+      //         image(targetImg, x * cellSize, y * cellSize, cellSize, cellSize);
+      //       }
+      //     }
+      //   }
+      // }
+      // else {
+
+      // }
     }
   }
 
