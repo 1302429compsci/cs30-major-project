@@ -540,11 +540,11 @@ class Player {
     if (spellTarget.x !== undefined) {
       let offsetX = Math.floor(abs(spellTarget.x - this.playX));
       let offsetY = Math.floor(abs(spellTarget.y - this.playY));
-
-      if (spellTarget.x !== this.playX && spellTarget.y !== this.playY) {
+      console.log(offsetX, offsetY);
+      if (offsetX !== 0 && offsetY !== 0) {
         for (let y = 0; y < rows; y++) {
           for (let x = 0; x < cols; x++) {
-            if (y >= this.playY && y <= spellTarget.y || y <= this.playY && y >= spellTarget.y) {
+            if ((y >= this.playY && y <= spellTarget.y || y <= this.playY && y >= spellTarget.y)) {
               image(targetImg, x * cellSize, y * cellSize, cellSize, cellSize);
             }
           }
